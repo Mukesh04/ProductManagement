@@ -1,0 +1,42 @@
+<div class="card">
+  <div class="card-header">
+    {{pageTitle}}
+  </div>
+  <div class="card-body">
+     <div class="container-fluid row" *ngFor = "let product of product">
+       <div class="row" *ngIf="product.productId == id">
+      <div class="col-md-8 " >
+        <div class="row">
+          <div class="col-md-4 desk">Name: </div>
+          <div class="col-md-8 desk">{{product.productName}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 desk">Code: </div>
+          <div class="col-md-8 desk">{{product.productCode}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 desk">Description: </div>
+          <div class="col-md-8 desk">{{product.description}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 desk">Availablilty: </div>
+          <div class="col-md-8 desk">{{product.releaseDate}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 desk">price: </div>
+          <div class="col-md-8 desk">{{product.price | currency:'INR':'symbol'}}</div>
+        </div>
+      </div>
+      <div class="col-md-4" style="margin: 3% 0 0;">
+        <button class="btn btn-primary"><i class="fas fa-pencil-alt"></i></button>
+        <img [src]="product.imageUrl" [title]= 'product.productName' class="img-responsive" style="width:100%" alt="Image">
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-primary" (click)="onBack()">
+      <i class="fa fa-chavron-left"></i>Back
+    </button>
+  </div>
+</div>

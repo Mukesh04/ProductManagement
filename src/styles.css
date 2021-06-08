@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~font-awesome/css/font-awesome.min.css";
+
+body{
+  margin: 1% 2% 0;
+}
+
+div.card-header {
+  font-size: large;
+ }
+
+ div.card {
+   margin-top: 10px
+ }
+
+ .table {
+   margin-top: 10px
+ }
+ table tr,table th {
+   min-height: 70px;
+   max-height: 70px;
+   height: 70px;
+ }
+.container{
+  max-width: 1520px;
+}
+
+ .desk{
+   padding: 4%;
+ }
+
+ tbody, td, tfoot, th, thead, tr {
+  vertical-align: middle;
+  text-align: center;
+ }
+
+ a {
+  color: #000;
+  text-decoration: auto;
+}

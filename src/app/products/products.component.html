@@ -1,0 +1,60 @@
+<div class="card">
+  <div class="card-header">
+    <h1>{{pageTitle}}</h1>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-2">
+        Filter By
+      </div>
+      <div class="col-md-4">
+
+     <input type="text" [(ngModel)]="ListOfFilterM"></div>
+      <div class="col-md-4">
+        <h4>Filter By {{ListOfFilterM}}</h4>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-secondary" (click) = "addRow()">{{showItem ? "Delete Product" : "Add Product"}}</button>
+      </div>
+    </div>
+    <div class="table-responsive">
+    <table class="table" *ngIf="product.length">
+      <thead>
+        <tr>
+          <th>
+            <button class="btn btn-primary" (click) = "toggleImage()" >{{showImage ? "Hide" : "Show"}}</button>
+          </th>
+          <th>Product</th>
+          <th>Code</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>5 Star_Rating</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of filterProduct">
+          <td><img [src]= 'product.imageUrl' width="80px" height="80px" *ngIf=!showImage/></td>
+          <td><a [routerLink]="['/products', product.productId]">{{product.productName}}</a></td>
+          <td>{{product.productCode}}</td>
+          <td>{{product.description}}</td>
+          <td>{{product.price | currency:'INR':'symbol':'2.2-2'}}</td>
+          <td><app-start-component [rating] = 'product.starRating' (ratingCLicked) = 'onRatingClicked($event)'> </app-start-component></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+  <div class="card-footer" style="text-align: center; font-weight: bold;">
+    {{StarRating}}
+    <form #userlogin = "ngForm" (ngSubmit) = "onSubmit(userlogin.value)" *ngIf=!showItem>
+      <td><input type="file" class="form-control" id="itemImage" name="itemImage" ngModel></td>
+      <td><input type="text" class="form-control" name="pName" ngModel></td>
+      <td><input type="text" class="form-control" name="pCode" placeholder="GMK-1234" pattern="[A-Za-z]{3}-[0-9]{4}" ngModel></td>
+      <td><input type="text" class="form-control" name="pDesc" ngModel></td>
+      <td><input type="number" class="form-control" name="pCurrency" placeholder="$0.0" ngModel></td>
+      <td><input type="number" class="form-control" name="pRating" placeholder="1.0 - 5.0" pattern="[0-5]{2}" ngModel></td>
+      <td><button class="btn btn-danger" type="submit">Add Items</button></td>
+  </form>
+  </div>
+</div>
